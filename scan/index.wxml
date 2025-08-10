@@ -1,0 +1,41 @@
+<view class="container">
+  <!-- 操作员输入 -->
+  <view class="card">
+    <view class="title">操作员信息</view>
+    <view class="input-group">
+      <text class="label">姓名：</text>
+      <input 
+        type="text" 
+        value="{{operatorName}}" 
+        bindinput="inputOperatorName"
+        placeholder="请输入您的姓名"
+        class="name-input"
+      />
+    </view>
+  </view>
+  
+  <!-- 扫码按钮 -->
+  <button 
+    bindtap="scanCode" 
+    class="scan-btn"
+    disabled="{{!operatorName}}"
+   style="position: relative; left: 0rpx; top: 100rpx">
+    {{operatorName ? '开始扫码' : '请先输入姓名'}}
+  </button>
+  
+  <!-- 历史操作员 -->
+  <view class="card" wx:if="{{operatorHistory.length > 0}}">
+    <view class="title" style="position: relative; left: -90rpx; top: 244rpx">最近操作员</view>
+    <view class="history-list">
+      <view 
+        wx:for="{{operatorHistory}}" 
+        wx:key="index"
+        class="history-item"
+        bindtap="selectOperator"
+        data-name="{{item}}"
+       style="position: relative; left: 90rpx; top: 134rpx">
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

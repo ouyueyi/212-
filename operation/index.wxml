@@ -1,0 +1,90 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <image src="/images/loading.gif" class="loading-icon"></image>
+    <text>加载中...</text>
+  </view>
+  
+  <view wx:else>
+    <!-- 模块信息卡片 -->
+    <view class="card">
+      <view class="title">模块信息</view>
+      <view class="info">
+        <text class="label">名称：</text>
+        <text class="value">{{module.name}}</text>
+      </view>
+      <view class="info">
+        <text class="label">ID：</text>
+        <text class="value">{{module.module_id}}</text>
+      </view>
+      <view class="info">
+        <text class="label">类型：</text>
+        <text class="value">{{module.type}}</text>
+      </view>
+      <view class="info">
+        <text class="label">当前库存：</text>
+        <text class="value">{{currentStock}}</text>
+      </view>
+      <view class="info">
+        <text class="label">位置：</text>
+        <text class="value">{{module.location || '未设置'}}</text>
+      </view>
+      <view class="info">
+        <text class="label">最后更新：</text>
+        <text class="value">{{formatDate(module.updated_at)}}</text>
+      </view>
+    </view>
+
+    <!-- 操作选择 -->
+    <view class="card">
+      <view class="title">选择操作</view>
+      <view class="operation-buttons">
+        <button 
+          bindtap="selectOperation" 
+          data-op="in"
+          class="{{operation === 'in' ? 'active' : ''}}"
+          disabled="{{isProcessing}}"
+        >入库</button>
+        <button 
+          bindtap="selectOperation" 
+          data-op="out"
+          class="{{operation === 'out' ? 'active' : ''}}"
+          disabled="{{isProcessing}}"
+        >出库</button>
+      </view>
+    </view>
+
+    <!-- 数量输入 -->
+    <view class="card">
+      <view class="title">数量设置</view>
+      <view class="input-container">
+        <text class="input-label">数量：</text>
+        <input 
+          type="number" 
+          value="{{quantity}}" 
+          bindinput="inputQuantity"
+          class="quantity-input"
+          placeholder="输入数量"
+          disabled="{{isProcessing}}"
+        />
+      </view>
+    </view>
+
+    <!-- 确认按钮 -->
+    <button 
+      bindtap="submitOperation" 
+      class="submit-btn"
+      disabled="{{isProcessing}}"
+      loading="{{isProcessing}}"
+    >
+      {{isProcessing ? '处理中...' : (operation === 'in' ? '确认入库' : '确认出库')}}
+    </button>
+    
+    <!-- 查看日志按钮 -->
+    <button 
+      bindtap="viewLogs" 
+      class="log-btn"
+    >
+      查看操作记录
+    </button>
+  </view>
+</view>

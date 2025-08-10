@@ -1,0 +1,58 @@
+.container {
+  padding: 30rpx;
+}
+
+.card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.info {
+  display: flex;
+  margin: 20rpx 0;
+  align-items: center;
+}
+
+.label {
+  width: 160rpx;
+  color: #666;
+}
+
+.value {
+  flex: 1;
+  color: #333;
+}
+
+.input {
+  flex: 1;
+  height: 80rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+}
+
+.submit-btn {
+  margin-top: 40rpx;
+  background: #07c160;
+  color: white;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+}
+
+.submit-btn[disabled] {
+  background: #cccccc;
+}
